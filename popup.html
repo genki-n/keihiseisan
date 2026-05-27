@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>領収書保存</title>
+  <style>
+    body { font-family: sans-serif; width: 420px; margin: 12px; }
+    fieldset { margin-bottom: 10px; }
+    .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+    #log { white-space: pre-wrap; border: 1px solid #ccc; padding: 8px; height: 220px; overflow: auto; font-size: 12px; }
+    button { width: 100%; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <h3>領収書PDF保存</h3>
+  <fieldset>
+    <legend>1) サービス選択</legend>
+    <label><input type="radio" name="service" value="amazon"> Amazon</label>
+    <label><input type="radio" name="service" value="yahoo"> Yahoo!ショッピング</label>
+    <label><input type="radio" name="service" value="both" checked> 両方</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>2) 対象年月</legend>
+    <div class="row">
+      <input id="year" type="number" min="2000" max="2100" />年
+      <select id="month"></select>月
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>3) 自動取得</legend>
+    <button id="runAuto">この月の領収書を保存</button>
+  </fieldset>
+
+  <fieldset>
+    <legend>4) 手動PDFリネーム</legend>
+    <input id="manualFiles" type="file" multiple accept="application/pdf" />
+    <button id="runManual">選択したPDFをリネームして保存</button>
+  </fieldset>
+
+  <fieldset>
+    <legend>ログ</legend>
+    <div id="log"></div>
+  </fieldset>
+
+  <script src="popup.js"></script>
+</body>
+</html>

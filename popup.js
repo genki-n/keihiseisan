@@ -74,7 +74,13 @@ async function processAuto() {
       }
       const urls = response?.urls || [];
       total += urls.length;
+      if (response?.usedFallback) {
+        log(`${target}: カード抽出0件のためページ全体リンク抽出へフォールバック`);
+      }
       log(`${target}: 対象 ${urls.length}件`);
+      if (urls.length === 0) {
+        log(`${target}: 0件です。注文履歴の表示期間/ログイン状態/CAPTCHA を確認してください`);
+      }
 
       for (const u of urls) {
         const r = await chrome.runtime.sendMessage({ action: 'PROCESS_PDF_URL', pdfUrl: u, expectedType: target });

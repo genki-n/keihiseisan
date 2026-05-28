@@ -48,10 +48,12 @@
       });
     });
 
+    let usedFallback = false;
     if (urls.size === 0) {
+      usedFallback = true;
       collectReceiptLinks().forEach((u) => urls.add(u));
     }
 
-    sendResponse({ urls: [...urls] });
+    sendResponse({ urls: [...urls], usedFallback });
   });
 })();

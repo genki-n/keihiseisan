@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Receipt History Downloader",
+  "version": "0.1.0",
+  "description": "Amazon.co.jp / Yahoo!ショッピングの領収書PDFを解析して保存する",
+  "permissions": ["downloads", "storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://www.amazon.co.jp/*",
+    "https://order.shopping.yahoo.co.jp/*",
+    "https://shopping.yahoo.co.jp/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/pdf.min.js", "lib/pdf.worker.min.js", "pdf_parser.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
